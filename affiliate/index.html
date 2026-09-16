@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <script>document.documentElement.className += " js";</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>برنامج التسويق بالعمولة | الجهمي ديزاين</title>
+  <meta name="description" content="سوّق ثيمات الجهمي ديزاين (ثيم عالي وثيم نجم) على منصة سلة واكسب عمولة على كل متجر من طرفك، مع دعم ومتابعة من فريق الجهمي." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jahmi.sa/affiliate/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta property="og:site_name" content="الجهمي ديزاين" />
+  <meta property="og:title" content="برنامج التسويق بالعمولة | الجهمي ديزاين" />
+  <meta property="og:description" content="انضم لبرنامج التسويق بالعمولة في الجهمي ديزاين وسوّق لثيماتنا على منصة سلة مع دعم ومتابعة من فريقنا." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/hesham0ali/jahmi/main/affiliate/assets/aljahmi-logo-square.webp" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" type="image/webp" href="https://raw.githubusercontent.com/hesham0ali/jahmi/main/affiliate/assets/aljahmi-logo-square.webp" />
+
+  <!-- Fonts: Cairo (matches Jahmi brand) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" />
+
+  <style>
+/* ==========================================================================
+   الجهمي ديزاين — برنامج التسويق بالعمولة
+   Landing page styles. Dark brand theme (matches jahmi.sa) + gold accent.
+   Structure: tokens → base → layout → buttons → header → hero → sections → footer
+   ========================================================================== */
+
+/* ------------------------------ Design Tokens ----------------------------- */
+:root {
+  /* Surfaces (near-black brand base) */
+  --bg: #0a0a0a;
+  --surface: #101219;
+  --surface-2: #0d0f15;
+  --card: #14161f;
+  --card-hover: #191c27;
+
+  /* Ink */
+  --text: #eceef4;
+  --muted: #9aa3b5;
+  --muted-2: #767e90;
+
+  /* Lines */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+
+  /* Brand accents */
+  --gold: #ffd21e;
+  --gold-strong: #f0b90b;
+  --gold-tint: rgba(255, 210, 30, 0.12);
+  --teal: #2dd4c3;
+  --wa: #25d366;
+
+  /* Radii */
+  --r-sm: 10px;
+  --r: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --pill: 999px;
+
+  /* Type scale (fluid) */
+  --text-eyebrow: 0.82rem;
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.075rem);
+  --text-h2: clamp(1.6rem, 1.15rem + 2vw, 2.5rem);
+  --text-hero: clamp(2rem, 1.15rem + 4.2vw, 3.5rem);
+
+  /* Rhythm */
+  --container: 1180px;
+  --container-narrow: 880px;
+  --pad-inline: clamp(1rem, 0.4rem + 2.4vw, 2rem);
+  --space-section: clamp(3.25rem, 2.4rem + 4vw, 6rem);
+
+  /* Motion */
+  --dur: 240ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Elevation */
+  --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.85);
+  --shadow-gold: 0 16px 40px -18px rgba(255, 210, 30, 0.35);
+}
+
+/* --------------------------------- Reset ---------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; height: auto; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 { line-height: 1.28; font-weight: 800; letter-spacing: -0.01em; }
+
+ul, ol { list-style: none; padding: 0; }
+
+button { font: inherit; color: inherit; cursor: pointer; }
+
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: -0.18em;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  right: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--gold);
+  color: #0a0a0a;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  border-radius: var(--r-sm);
+  transition: top var(--dur) var(--ease);
+}
+.skip-link:focus { top: 12px; }
+
+/* --------------------------------- Layout --------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad-inline);
+}
+.container-narrow { max-width: var(--container-narrow); }
+
+.section { padding-block: var(--space-section); }
+/* offset anchored sections from the sticky header */
+:where(section[id], [id="top"]) { scroll-margin-top: 84px; }
+/* alternating section backgrounds, matching jahmi.sa rhythm */
+.themes { background: var(--surface); }
+.join { background: var(--surface); }
+
+.section-head {
+  text-align: center;
+  max-width: 660px;
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 1.2rem + 2.6vw, 3.25rem);
+}
+.section-head h2 { font-size: var(--text-h2); margin-top: 0.6rem; }
+.section-intro { color: var(--muted); margin-top: 0.7rem; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--text-eyebrow);
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--gold-tint);
+  border: 1px solid rgba(255, 210, 30, 0.22);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--pill);
+  letter-spacing: 0.01em;
+}
+
+.hl { color: var(--gold); }
+
+/* --------------------------------- Buttons -------------------------------- */
+.btn {
+  --btn-py: 0.8rem;
+  --btn-px: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: var(--btn-py) var(--btn-px);
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease), opacity var(--dur);
+}
+.btn .icon { width: 1.15em; height: 1.15em; transition: transform var(--dur) var(--ease); }
+.btn-sm { --btn-py: 0.62rem; --btn-px: 1.05rem; font-size: 0.92rem; }
+.btn-lg { --btn-py: 1rem; --btn-px: 1.85rem; font-size: 1.05rem; }
+
+.btn-primary { background: var(--gold); color: #0a0a0a; }
+.btn-primary:hover { background: var(--gold-strong); transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+
+.btn-ghost { background: rgba(255, 255, 255, 0.04); color: var(--text); border-color: var(--border-strong); }
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 255, 255, 0.28); transform: translateY(-2px); }
+.btn-ghost:hover .icon { transform: translateX(-3px); }
+
+/* Disabled CTA (URL not configured yet) — never navigates, never uses "#" */
+.btn.is-disabled,
+a.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.btn.is-disabled:hover { background: var(--gold); }
+.btn-ghost.is-disabled:hover { background: rgba(255, 255, 255, 0.04); border-color: var(--border-strong); }
+
+/* --------------------------------- Header --------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 68px;
+}
+.brand { display: inline-flex; align-items: center; }
+.brand-logo { width: auto; height: 42px; }
+
+.main-nav { display: flex; align-items: center; }
+.nav-menu { display: flex; align-items: center; gap: 0.35rem; }
+.nav-menu > li > a:not(.btn) {
+  display: inline-block;
+  padding: 0.5rem 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+  border-radius: var(--r-sm);
+  transition: color var(--dur), background var(--dur);
+}
+.nav-menu > li > a:not(.btn):hover,
+.nav-menu > li > a.is-active { color: var(--text); background: rgba(255, 255, 255, 0.05); }
+.nav-cta-item { margin-inline-start: 0.5rem; }
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  color: var(--text);
+}
+.nav-toggle .icon { width: 1.5em; height: 1.5em; }
+
+/* ---------------------------------- Hero ---------------------------------- */
+.hero {
+  position: relative;
+  padding-block: clamp(3rem, 2rem + 5vw, 6rem);
+  background: radial-gradient(60% 60% at 50% 0%, rgba(255, 210, 30, 0.1), transparent 62%);
+}
+.hero-inner { max-width: 880px; margin-inline: auto; text-align: center; }
+.hero-inner .eyebrow { margin-bottom: 1.3rem; }
+.hero h1 { font-size: var(--text-hero); font-weight: 900; }
+.hero-lede {
+  color: var(--muted);
+  font-size: clamp(1.05rem, 0.98rem + 0.4vw, 1.25rem);
+  max-width: 54ch;
+  margin: 1.2rem auto 0;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-top: 2.1rem;
+}
+.hero-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 2.4rem;
+}
+.hero-benefits li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--pill);
+}
+.hero-benefits .icon { color: var(--gold); }
+
+/* ------------------------------ Theme cards ------------------------------- */
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.2rem, 0.8rem + 1.5vw, 2rem);
+}
+.theme-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease), border-color var(--dur), box-shadow var(--dur);
+}
+.theme-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: var(--shadow); }
+
+/* Branded preview (swap for a real screenshot via <img class="theme-shot">) */
+.theme-preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background:
+    radial-gradient(130% 120% at 50% 0%, rgba(255, 210, 30, 0.16), transparent 58%),
+    var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.theme-shot { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--border); }
+.tp-bar { display: flex; align-items: center; gap: 6px; padding: 0.75rem 0.95rem; }
+.tp-bar span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
+.tp-bar em {
+  margin-inline-start: auto;
+  font-style: normal;
+  font-size: 0.72rem;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.75rem;
+  border-radius: var(--pill);
+  direction: ltr;
+}
+.tp-stage {
+  position: absolute;
+  inset: 2.8rem 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+}
+.tp-logo { height: 34px; width: auto; opacity: 0.95; }
+.tp-name { font-size: clamp(1.5rem, 1rem + 2.4vw, 2.2rem); font-weight: 900; color: var(--gold); }
+.tp-tag {
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.85rem;
+  border-radius: var(--pill);
+}
+.theme-body { display: flex; flex-direction: column; flex: 1; padding: clamp(1.3rem, 1rem + 1vw, 1.7rem); }
+.theme-body h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.theme-body p { color: var(--muted); margin-bottom: 1.3rem; }
+.theme-body .btn { margin-top: auto; width: 100%; }
+
+/* -------------------------- Feature / condition grid ---------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1.7rem 1.5rem;
+  transition: transform var(--dur) var(--ease), border-color var(--dur), background var(--dur);
+}
+.feature-card:hover { transform: translateY(-5px); border-color: var(--border-strong); background: var(--card-hover); }
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r);
+  background: var(--gold-tint);
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.feature-icon .icon { width: 1.5em; height: 1.5em; }
+.feature-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.feature-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.72; }
+
+.conditions-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 62ch;
+  margin: clamp(1.8rem, 1.2rem + 1.5vw, 2.6rem) auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ------------------------------ Ways to join ------------------------------ */
+.join-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.2rem, 0.8rem + 1.5vw, 1.8rem);
+}
+.join-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
+  transition: border-color var(--dur), transform var(--dur) var(--ease);
+}
+.join-card:hover { border-color: var(--border-strong); transform: translateY(-4px); }
+.join-icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--r);
+  background: var(--gold-tint);
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.join-icon .icon { width: 1.6em; height: 1.6em; }
+.join-card h3 { font-size: 1.3rem; margin-bottom: 0.6rem; }
+.join-card > p { color: var(--muted); }
+.join-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  color: var(--gold);
+  background: var(--gold-tint);
+  border: 1px solid rgba(255, 210, 30, 0.22);
+  padding: 0.6rem 0.95rem;
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 1.1rem 0 0;
+}
+.join-highlight .icon { color: var(--gold); }
+.payout { margin: 1.2rem 0 0; }
+.payout-label { display: block; font-size: 0.85rem; color: var(--muted-2); margin-bottom: 0.6rem; }
+.payout-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.payout-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--pill);
+}
+.payout-list .icon { color: var(--gold); }
+.join-card .btn { margin-top: 1.6rem; width: 100%; }
+
+/* ------------------------------ How it works ------------------------------ */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.1rem;
+}
+.step-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 2.4rem 1.4rem 1.6rem;
+  transition: transform var(--dur) var(--ease), border-color var(--dur), background var(--dur);
+}
+.step-card:hover { transform: translateY(-6px); border-color: var(--border-strong); background: var(--card-hover); }
+.step-num {
+  position: absolute;
+  top: 1.1rem;
+  inset-inline-end: 1.2rem;
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.09);
+  letter-spacing: -0.02em;
+}
+.step-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r);
+  background: var(--gold-tint);
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.step-icon .icon { width: 1.55em; height: 1.55em; }
+.step-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.step-card p { color: var(--muted); font-size: 0.94rem; line-height: 1.7; }
+
+/* ------------------------------- Final CTA -------------------------------- */
+.final-cta { text-align: center; }
+.final-card {
+  position: relative;
+  background:
+    radial-gradient(70% 120% at 50% 0%, rgba(255, 210, 30, 0.1), transparent 60%),
+    var(--card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-xl);
+  padding: clamp(2.2rem, 1.4rem + 3vw, 3.6rem) clamp(1.4rem, 0.8rem + 2.4vw, 3rem);
+  box-shadow: var(--shadow);
+}
+.final-card h2 { font-size: var(--text-h2); }
+.final-card > p { color: var(--muted); max-width: 54ch; margin: 0.9rem auto 0; }
+.final-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; margin-top: 2rem; }
+.final-note { font-size: 0.85rem; color: var(--muted-2); margin-top: 1.6rem; }
+
+/* --------------------------------- Footer --------------------------------- */
+.site-footer { border-top: 1px solid var(--border); background: var(--surface-2); }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 2rem;
+  padding-block: clamp(2.5rem, 1.8rem + 2vw, 3.5rem);
+}
+.footer-logo { height: 46px; width: auto; margin-bottom: 1rem; }
+.footer-brand p { color: var(--muted); max-width: 34ch; }
+.footer-title { font-size: 0.95rem; font-weight: 800; margin-bottom: 1rem; color: var(--text); }
+.footer-links ul { display: grid; gap: 0.65rem; }
+.footer-links a { color: var(--muted); transition: color var(--dur); }
+.footer-links a:hover { color: var(--gold); }
+.footer-actions .btn { width: fit-content; }
+.footer-bottom {
+  padding-block: 1.4rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted-2);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* ----------------------------- Scroll reveal ------------------------------ */
+/* Gated behind .js so content stays fully visible when JavaScript is off. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+.steps-grid .reveal:nth-child(2),
+.card-grid .reveal:nth-child(2) { transition-delay: 70ms; }
+.steps-grid .reveal:nth-child(3),
+.card-grid .reveal:nth-child(3) { transition-delay: 140ms; }
+.steps-grid .reveal:nth-child(4),
+.card-grid .reveal:nth-child(4) { transition-delay: 210ms; }
+.card-grid .reveal:nth-child(5) { transition-delay: 280ms; }
+.card-grid .reveal:nth-child(6) { transition-delay: 350ms; }
+
+/* ============================== Responsive ================================ */
+@media (max-width: 1024px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .join-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+
+  /* Mobile navigation */
+  .nav-toggle { display: inline-flex; }
+  .nav-menu {
+    position: fixed;
+    inset: 0 0 auto 0;
+    top: 68px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem var(--pad-inline) 1.4rem;
+    transform: translateY(-140%);
+    transition: transform var(--dur) var(--ease);
+    max-height: calc(100vh - 68px);
+    overflow-y: auto;
+  }
+  .nav-menu.is-open { transform: translateY(0); box-shadow: var(--shadow); }
+  .nav-menu > li > a:not(.btn) { padding: 0.9rem 0.85rem; font-size: 1.05rem; }
+  .nav-cta-item { margin: 0.5rem 0 0; }
+  .nav-cta-item .btn { width: 100%; justify-content: center; padding-block: 0.9rem; }
+}
+
+@media (max-width: 700px) {
+  .themes-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .hero-actions .btn,
+  .final-actions .btn { width: 100%; }
+  .hero-benefits { flex-direction: column; align-items: stretch; }
+  .hero-benefits li { justify-content: center; }
+}
+
+@media (max-width: 400px) {
+  .brand-logo { height: 36px; }
+}
+
+/* --------------------------- Reduced motion ------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+  <!-- ============ ICON SPRITE (inline, dependency-free) ============ -->
+  <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false" style="position:absolute">
+    <defs>
+      <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 7a2 2 0 0 1 2-2h11v3"/><rect x="3" y="7" width="18" height="12" rx="2.5"/><path d="M21 11.5h-4a1.5 1.5 0 0 0 0 3h4"/>
+      </symbol>
+      <symbol id="i-support" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M20 18.5V19a3 3 0 0 1-3 3h-2"/>
+      </symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/>
+      </symbol>
+      <symbol id="i-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>
+      </symbol>
+      <symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9h16l-1-4H5L4 9Z"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9"/><path d="M9 20v-5h6v5"/>
+      </symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/>
+      </symbol>
+      <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 12.5 12.5 20a2 2 0 0 1-2.8 0l-5.7-5.7a2 2 0 0 1 0-2.8L11 4h7a2 2 0 0 1 2 2v6.5Z"/><circle cx="15.5" cy="8.5" r="1.1"/>
+      </symbol>
+      <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9.5h18"/><path d="M7 14.5h4"/>
+      </symbol>
+      <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/>
+      </symbol>
+      <symbol id="i-badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 12 2 2 4-4"/><path d="M12 3l2.3 1.7 2.8-.2.9 2.7 2.3 1.6-.9 2.7.9 2.7-2.3 1.6-.9 2.7-2.8-.2L12 21l-2.3-1.7-2.8.2-.9-2.7L3.7 15.4l.9-2.7-.9-2.7 2.3-1.6.9-2.7 2.8.2Z"/>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3 5 6v5c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/>
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9Z"/><path d="M8 9h8M8 13h5"/>
+      </symbol>
+      <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.6-4.8 2.6.9-5.4L4.2 9.7l5.4-.8L12 4Z"/>
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="8" r="3"/><path d="M4 20a5 5 0 0 1 10 0"/><path d="M16 5.5a3 3 0 0 1 0 5.4M20 20a5 5 0 0 0-3.5-4.8"/>
+      </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15.5 4.5a4 4 0 0 0-5 5L4 16v4h4l6.5-6.5a4 4 0 0 0 5-5l-2.7 2.7-2.3-.4-.4-2.3 2.6-2.7Z"/>
+      </symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.38a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.12-2.9-6.99A9.82 9.82 0 0 0 12.04 2Zm0 1.8c2.16 0 4.19.84 5.72 2.37a8.03 8.03 0 0 1 2.37 5.73c0 4.46-3.63 8.09-8.1 8.09a8.1 8.1 0 0 1-4.12-1.13l-.3-.17-3.15.82.84-3.07-.19-.31a8.03 8.03 0 0 1-1.24-4.3c0-4.46 3.63-8.1 8.1-8.1Zm-4.5 4.17c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.66.76.24 1.44.21 1.99.13.61-.09 1.86-.76 2.13-1.5.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.61-.37-.31-.16-1.86-.92-2.15-1.02-.29-.11-.5-.16-.71.16-.21.31-.81 1.02-.99 1.23-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.52-1.55-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.13-.64.14-.14.31-.37.47-.55.15-.19.2-.32.31-.53.1-.21.05-.4-.03-.55-.08-.16-.71-1.72-1-2.35-.24-.53-.48-.53-.68-.54h-.6Z"/>
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 12H4"/><path d="m10 6-6 6 6 6"/>
+      </symbol>
+      <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="الجهمي ديزاين — برنامج التسويق بالعمولة">
+        <img src="https://raw.githubusercontent.com/hesham0ali/jahmi/main/affiliate/assets/aljahmi-logo.webp" width="140" height="70" alt="الجهمي ديزاين" class="brand-logo" />
+      </a>
+
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="فتح القائمة">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#themes">الثيمات</a></li>
+          <li><a href="#benefits">المميزات</a></li>
+          <li><a href="#how-it-works">كيف تبدأ</a></li>
+          <li><a href="#conditions">الشروط</a></li>
+          <li class="nav-cta-item">
+            <a class="btn btn-primary btn-sm js-whatsapp-cta" data-wa-msg="مرحبًا، أرغب في التسجيل في برنامج التسويق بالعمولة لدى الجهمي ديزاين.">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              سجّل عبر واتساب
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ 1. HERO ============ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-inner">
+        <span class="eyebrow">برنامج التسويق بالعمولة</span>
+        <h1 id="hero-heading">
+          سوّق ثيمات الجهمي<br />
+          واكسب <span class="hl">عمولة</span> على كل متجر من طرفك
+        </h1>
+        <p class="hero-lede">
+          انضم لبرنامج التسويق بالعمولة في الجهمي ديزاين، وسوّق لثيماتنا على منصة سلة،
+          مع دعم ومتابعة من فريقنا.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg js-whatsapp-cta" data-wa-msg="مرحبًا، أرغب في التسجيل في برنامج التسويق بالعمولة لدى الجهمي ديزاين.">
+            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            سجّل معنا عبر واتساب
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#themes">
+            استعرض الثيمات
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+
+        <ul class="hero-benefits" aria-label="أبرز المزايا">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg> عمولة على كل متجر</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-support"/></svg> أولوية في الدعم</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> ثيمات يتم تحديثها باستمرار</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 2. AVAILABLE THEMES ============ -->
+    <section class="section themes" id="themes" aria-labelledby="themes-heading">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">الثيمات</span>
+          <h2 id="themes-heading">الثيمات المتاحة للتسويق</h2>
+          <p class="section-intro">ابدأ التسويق للثيم المناسب لعملائك.</p>
+        </header>
+
+        <div class="themes-grid">
+          <!-- To use a real screenshot, replace the .theme-preview block with:
+               <img class="theme-shot" src="assets/theme-aali.webp" width="720" height="450" alt="معاينة ثيم عالي" /> -->
+          <article class="theme-card reveal">
+            <div class="theme-preview" aria-hidden="true">
+              <div class="tp-bar"><span></span><span></span><span></span><em>jahmi.sa</em></div>
+              <div class="tp-stage">
+                <img class="tp-logo" src="https://raw.githubusercontent.com/hesham0ali/jahmi/main/affiliate/assets/aljahmi-logo.webp" alt="" />
+                <span class="tp-name">ثيم عالي</span>
+                <span class="tp-tag">ثيم منصة سلة</span>
+              </div>
+            </div>
+            <div class="theme-body">
+              <h3>ثيم عالي</h3>
+              <p>ثيم احترافي لمتاجر سلة، مستقر ويتم تطويره وتحديثه بصورة دورية.</p>
+              <a class="btn btn-ghost js-theme-cta" data-theme="high">
+                استعرض الثيم
+                <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="theme-card reveal">
+            <div class="theme-preview" aria-hidden="true">
+              <div class="tp-bar"><span></span><span></span><span></span><em>jahmi.sa</em></div>
+              <div class="tp-stage">
+                <img class="tp-logo" src="https://raw.githubusercontent.com/hesham0ali/jahmi/main/affiliate/assets/aljahmi-logo.webp" alt="" />
+                <span class="tp-name">ثيم نجم</span>
+                <span class="tp-tag">ثيم منصة سلة</span>
+              </div>
+            </div>
+            <div class="theme-body">
+              <h3>ثيم نجم</h3>
+              <p>ثيم احترافي من الجهمي ديزاين، متاح أيضًا ضمن برنامج التسويق بالعمولة.</p>
+              <a class="btn btn-ghost js-theme-cta" data-theme="najm">
+                استعرض الثيم
+                <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. WHY MARKET WITH JAHMI ============ -->
+    <section class="section benefits" id="benefits" aria-labelledby="benefits-heading">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">لماذا الجهمي</span>
+          <h2 id="benefits-heading">مميزات التسويق بالعمولة معنا</h2>
+        </header>
+
+        <div class="card-grid">
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></span>
+            <h3>عمولة على كل متجر من طرفك</h3>
+            <p>كل متجر يتم تسجيله من خلالك ويستوفي شروط البرنامج، تحصل مقابله على العمولة المتفق عليها.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-support"/></svg></span>
+            <h3>أولوية في الدعم الفني</h3>
+            <p>كمسوّق متعاون معنا، تحصل على أولوية في التواصل والمتابعة لمساعدتك في خدمة العملاء القادمين من طرفك.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg></span>
+            <h3>تحديثات دورية للثيمات</h3>
+            <p>الثيمات يتم تطويرها وتحديثها بصورة دورية لتحسين الاستقرار وتجربة الاستخدام.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <h3>ثيمات مستقرة ومجربة</h3>
+            <p>تسوّق منتجات جاهزة ومستخدمة فعليًا على متاجر سلة، مما يساعد العميل على تقييم الثيم قبل الشراء.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <h3>ثيم عالي من أبرز ثيمات الجهمي</h3>
+            <p>ثيم عالي حقق انتشارًا وتقييمات قوية على منصة سلة.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+            <h3>فريق فني يدعم العميل</h3>
+            <p>أنت تركز على التسويق، وفريق الجهمي يتولى الجوانب الفنية المتعلقة بالثيم عند الحاجة.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. WAYS TO JOIN ============ -->
+    <section class="section join" id="join" aria-labelledby="join-heading">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">طرق التعاون</span>
+          <h2 id="join-heading">اختر طريقة التعاون المناسبة لك</h2>
+        </header>
+
+        <div class="join-grid">
+          <article class="join-card reveal">
+            <span class="join-icon"><svg class="icon" aria-hidden="true"><use href="#i-store"/></svg></span>
+            <h3>من خلال شركاء سلة</h3>
+            <p>إذا كنت تعمل من خلال برنامج شركاء سلة، يمكنك التعاون معنا وتسويق ثيمات الجهمي من خلال المنصة.</p>
+            <p class="join-highlight"><svg class="icon" aria-hidden="true"><use href="#i-badge-check"/></svg> التسجيل والتوثيق معنا مجاني.</p>
+            <a class="btn btn-primary js-whatsapp-cta" data-wa-msg="مرحبًا، أرغب في التسجيل في برنامج التسويق بالعمولة من خلال شركاء سلة.">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              سجّل عبر واتساب
+            </a>
+          </article>
+
+          <article class="join-card reveal">
+            <span class="join-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
+            <h3>للمسوّقين في مصر</h3>
+            <p>ندعم أيضًا المسوّقين من مصر، ويمكن تحويل العمولة مباشرة بعد اعتماد الطلب.</p>
+            <div class="payout">
+              <span class="payout-label">طرق استلام العمولة:</span>
+              <ul class="payout-list">
+                <li><svg class="icon" aria-hidden="true"><use href="#i-card"/></svg> InstaPay</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg> Vodafone Cash</li>
+              </ul>
+            </div>
+            <a class="btn btn-primary js-whatsapp-cta" data-wa-msg="مرحبًا، أنا مسوّق من مصر وأرغب في التسجيل في برنامج التسويق بالعمولة.">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              سجّل كمسوّق من مصر
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. HOW IT WORKS ============ -->
+    <section class="section how-it-works" id="how-it-works" aria-labelledby="how-heading">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">خطوات البدء</span>
+          <h2 id="how-heading">كيف تبدأ؟</h2>
+        </header>
+
+        <ol class="steps-grid">
+          <li class="step-card reveal">
+            <span class="step-num">01</span>
+            <span class="step-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+            <h3>سجّل معنا</h3>
+            <p>تواصل معنا عبر واتساب وسجّل بياناتك كمسوّق.</p>
+          </li>
+          <li class="step-card reveal">
+            <span class="step-num">02</span>
+            <span class="step-icon"><svg class="icon" aria-hidden="true"><use href="#i-layout"/></svg></span>
+            <h3>اختر الثيم</h3>
+            <p>ابدأ التسويق لثيم عالي أو ثيم نجم.</p>
+          </li>
+          <li class="step-card reveal">
+            <span class="step-num">03</span>
+            <span class="step-icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+            <h3>تابع العميل حتى الشراء</h3>
+            <p>رشّح الثيم المناسب للعميل وتابع معه حتى إتمام عملية الشراء.</p>
+          </li>
+          <li class="step-card reveal">
+            <span class="step-num">04</span>
+            <span class="step-icon"><svg class="icon" aria-hidden="true"><use href="#i-badge-check"/></svg></span>
+            <h3>سجّل الطلب واستلم عمولتك</h3>
+            <p>بعد الشراء، أرسل بيانات العميل والمتجر خلال المدة المحددة، وبعد مراجعة الطلب يتم تحويل العمولة بالطريقة المتفق عليها.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 6. IMPORTANT CONDITIONS ============ -->
+    <section class="section conditions" id="conditions" aria-labelledby="conditions-heading">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">شروط أساسية</span>
+          <h2 id="conditions-heading">شروط مهمة قبل البدء</h2>
+        </header>
+
+        <div class="card-grid">
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <h3>تسجيل الطلب خلال 5 أيام</h3>
+            <p>يجب إرسال رابط المتجر وجميع البيانات المطلوبة خلال 5 أيام من عملية الشراء. الطلبات المتأخرة لا يتم احتساب عمولتها.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <h3>دقة البيانات</h3>
+            <p>المسوّق مسؤول عن صحة بيانات العميل ورابط المتجر وبيانات التواصل المقدمة.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+            <h3>العمولة يتم الاتفاق عليها مسبقًا</h3>
+            <p>قيمة العمولة يتم الاتفاق عليها مع فريق الجهمي عبر واتساب قبل بدء التعاون.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-target"/></svg></span>
+            <h3>شراء العميل مسؤولية المسوّق</h3>
+            <p>فريق الجهمي لا يتدخل في إقناع العميل بشراء الثيم نيابة عن المسوّق.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span>
+            <h3>استخدام كود الخصم</h3>
+            <p>في حال استخدام العميل كود خصم، قد يتم تعديل قيمة العمولة وفق قيمة الخصم وشروط البرنامج.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-badge-check"/></svg></span>
+            <h3>موعد تحويل العمولة</h3>
+            <p>يتم تحويل العمولة خلال 7 إلى 9 أيام عمل بعد التأكد من تفعيل الثيم واستيفاء شروط الطلب.</p>
+          </article>
+        </div>
+
+        <p class="conditions-note">بالتسجيل في البرنامج، يوافق المسوّق على شروط التسويق بالعمولة المعتمدة لدى الجهمي ديزاين.</p>
+      </div>
+    </section>
+
+    <!-- ============ 7. FINAL CTA ============ -->
+    <section class="section final-cta" aria-labelledby="final-heading">
+      <div class="container container-narrow">
+        <div class="final-card reveal">
+          <h2 id="final-heading">جاهز تبدأ التسويق معنا؟</h2>
+          <p>سجّل معنا وابدأ التسويق لثيم عالي وثيم نجم مع دعم ومتابعة من فريق الجهمي.</p>
+          <div class="final-actions">
+            <a class="btn btn-primary btn-lg js-whatsapp-cta" data-wa-msg="مرحبًا، أرغب في التسجيل في برنامج التسويق بالعمولة لدى الجهمي ديزاين.">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              سجّل الآن عبر واتساب
+            </a>
+          </div>
+          <p class="final-note">التسجيل مجاني، وتفاصيل العمولة يتم الاتفاق عليها مباشرة مع فريق الجهمي.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="https://raw.githubusercontent.com/hesham0ali/jahmi/main/affiliate/assets/aljahmi-logo.webp" width="150" height="75" alt="الجهمي ديزاين" class="footer-logo" />
+        <p>شريك سلة المعتمد لتقديم حلول فريدة لمتاجر منصة سلة.</p>
+      </div>
+      <nav class="footer-links" aria-label="روابط الفوتر">
+        <h2 class="footer-title">روابط</h2>
+        <ul>
+          <li><a href="https://jahmi.sa/" rel="noopener">الموقع الرئيسي</a></li>
+          <li><a href="#themes">الثيمات المتاحة</a></li>
+          <li><a href="#how-it-works">كيف تبدأ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-actions">
+        <h2 class="footer-title">ابدأ الآن</h2>
+        <a class="btn btn-primary btn-sm js-whatsapp-cta" data-wa-msg="مرحبًا، أرغب في التسجيل في برنامج التسويق بالعمولة لدى الجهمي ديزاين.">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          سجّل عبر واتساب
+        </a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>جميع الحقوق محفوظة | 2026 الجهمي ديزاين</p>
+    </div>
+  </footer>
+
+  <script>
+"use strict";
+
+const WHATSAPP_URL = "";
+const HIGH_THEME_URL = "";
+const NAJM_THEME_URL = "";
+
+function buildWhatsappUrl(base, message) {
+  if (!base) return "";
+  if (!message) return base;
+  const sep = base.includes("?") ? "&" : "?";
+  return base + sep + "text=" + encodeURIComponent(message);
+}
+
+function enableLink(el, url) {
+  el.setAttribute("href", url);
+  el.setAttribute("target", "_blank");
+  el.setAttribute("rel", "noopener noreferrer");
+  el.classList.remove("is-disabled");
+  el.removeAttribute("aria-disabled");
+  el.removeAttribute("tabindex");
+}
+
+function disableLink(el, hint) {
+  el.removeAttribute("href");
+  el.classList.add("is-disabled");
+  el.setAttribute("role", "link");
+  el.setAttribute("aria-disabled", "true");
+  el.setAttribute("tabindex", "0");
+  el.setAttribute("title", hint);
+  const notify = (e) => { e.preventDefault(); showToast(hint); };
+  el.addEventListener("click", notify);
+  el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") notify(e); });
+}
+
+function wireWhatsappCtas() {
+  document.querySelectorAll(".js-whatsapp-cta").forEach((el) => {
+    const message = el.getAttribute("data-wa-msg") || "";
+    const url = buildWhatsappUrl(WHATSAPP_URL, message);
+    if (url) enableLink(el, url);
+    else disableLink(el, "سيتم تفعيل رابط واتساب قريبًا.");
+  });
+}
+
+function wireThemeCtas() {
+  const urls = { high: HIGH_THEME_URL, najm: NAJM_THEME_URL };
+  document.querySelectorAll(".js-theme-cta").forEach((el) => {
+    const url = urls[el.getAttribute("data-theme")];
+    if (url) enableLink(el, url);
+    else disableLink(el, "سيتم إضافة رابط الثيم قريبًا.");
+  });
+}
+
+let toastTimer;
+function showToast(message) {
+  let toast = document.getElementById("cta-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "cta-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    Object.assign(toast.style, {
+      position: "fixed",
+      insetInlineStart: "50%",
+      bottom: "24px",
+      transform: "translateX(-50%) translateY(20px)",
+      maxWidth: "min(90vw, 420px)",
+      background: "#14161f",
+      color: "#eceef4",
+      border: "1px solid rgba(255,255,255,0.15)",
+      borderInlineStart: "4px solid #ffd21e",
+      borderRadius: "12px",
+      padding: "0.85rem 1.1rem",
+      fontWeight: "600",
+      fontSize: "0.95rem",
+      boxShadow: "0 18px 40px -18px rgba(0,0,0,0.8)",
+      zIndex: "1000",
+      opacity: "0",
+      transition: "opacity .25s ease, transform .25s ease",
+      textAlign: "center",
+    });
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  requestAnimationFrame(() => {
+    toast.style.opacity = "1";
+    toast.style.transform = "translateX(-50%) translateY(0)";
+  });
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateX(-50%) translateY(20px)";
+  }, 3200);
+}
+
+function initMobileNav() {
+  const toggle = document.querySelector(".nav-toggle");
+  const menu = document.getElementById("nav-menu");
+  if (!toggle || !menu) return;
+
+  const setOpen = (open) => {
+    menu.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "إغلاق القائمة" : "فتح القائمة");
+    toggle.innerHTML = open
+      ? '<svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>'
+      : '<svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>';
+  };
+
+  toggle.addEventListener("click", () => {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("is-open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (menu.classList.contains("is-open") && !e.target.closest(".main-nav")) setOpen(false);
+  });
+
+  window.matchMedia("(min-width: 861px)").addEventListener("change", (ev) => {
+    if (ev.matches) setOpen(false);
+  });
+}
+
+function initReveal() {
+  const items = document.querySelectorAll(".reveal");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+  );
+  items.forEach((el) => io.observe(el));
+}
+
+function initActiveNav() {
+  const links = [...document.querySelectorAll('.nav-menu a[href^="#"]')];
+  const map = new Map();
+  links.forEach((link) => {
+    const section = document.getElementById(link.getAttribute("href").slice(1));
+    if (section) map.set(section, link);
+  });
+  if (!map.size || !("IntersectionObserver" in window)) return;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const link = map.get(entry.target);
+        if (link && entry.isIntersecting) {
+          links.forEach((l) => l.classList.remove("is-active"));
+          link.classList.add("is-active");
+        }
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+  );
+  map.forEach((_, section) => io.observe(section));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  wireWhatsappCtas();
+  wireThemeCtas();
+  initMobileNav();
+  initReveal();
+  initActiveNav();
+});
+  </script>
+</body>
+</html>
